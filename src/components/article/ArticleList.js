@@ -35,8 +35,6 @@ class ArticleList extends Component {
                     data,
                     loading: false
                 })
-            }).catch(err => {
-                console.log(err);
             })
         })
     }
