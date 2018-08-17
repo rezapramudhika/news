@@ -1,5 +1,19 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "sdkVersion": "27.0.0",
+    "name": "News",
+    "icon": "./src/assets/img/logo.png",
+    "version": "1.0.0",
+    "slug": "News",
+    "ios": {
+      "bundleIdentifier": "com.rezapramudhika.news"
+    },
+    "android": {
+      "package": "com.rezapramudhika.news",
+      "versionCode": 1
+    },
+    "packagerOpts": {
+      "nonPersistent": true
+    }
   }
 }

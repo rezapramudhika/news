@@ -25,7 +25,7 @@ class ArticleListItem extends Component {
 
                 </Left>
                 <Body>
-                    <Text style={{ fontWeight: 'bold' }} bold>{headline}</Text>
+                    <Text style={{ fontWeight: 'bold' }} numberOfLines={2} bold>{headline}</Text>
                     <Text style={{ fontSize: 12 }} numberOfLines={2}>{snippet}</Text>
                     <Text style={{ fontSize: 12 }} note>{moment(pub_date).startOf('hour').fromNow()}</Text>
                 </Body>
