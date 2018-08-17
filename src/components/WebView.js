@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Spinner } from 'native-base';
-import { View, WebView } from 'react-native';
+import { WebView } from 'react-native';
 
 class ArticleDetail extends Component {
     constructor(props) {

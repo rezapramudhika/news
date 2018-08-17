@@ -19,35 +19,25 @@ class ArticleList extends Component {
     }
 
     componentDidMount() {
-        getArticle({
-            sort: this.state.sort,
-            page: this.state.page,
-            q: this.state.query
-        }).then(data => {
-            this.setState({
-                data,
-                loading: false
-            })
-        }).catch(err => {
-            console.log(err);
-        })
+        this.fetchArticle();
     }
 
     fetchArticle = () => {
         this.setState({
             loading: true
-        })
-        getArticle({
-            sort: this.state.sort,
-            page: this.state.page,
-            q: this.state.query
-        }).then(data => {
-            this.setState({
-                data,
-                loading: false
+        }, () => {
+            getArticle({
+                sort: this.state.sort,
+                page: this.state.page,
+                q: this.state.query
+            }).then(data => {
+                this.setState({
+                    data,
+                    loading: false
+                })
+            }).catch(err => {
+                console.log(err);
             })
-        }).catch(err => {
-            console.log(err);
         })
     }
 
@@ -55,19 +45,25 @@ class ArticleList extends Component {
         if (this.state.sort === 'newest') {
             this.setState({
                 sort: 'oldest'
-            })
-            this.fetchArticle();
+            }, () => {
+                this.fetchArticle();
+            });
         } else {
             this.setState({
                 sort: 'newest'
-            })
-            this.fetchArticle();
+            }, () => {
+                this.fetchArticle();
+            });
         }
     }
 
     onRefresh = () => {
-        this.setState({ refreshing: true });
-        this.fetchArticle();
+        this.setState({
+            refreshing: true
+        }, () => {
+            this.fetchArticle();
+        });
+
         if (!this.state.loading) {
             this.setState({ refreshing: false });
         }
@@ -121,9 +117,9 @@ class ArticleList extends Component {
                 <Header style={{ backgroundColor: '#363636' }} searchBar rounded>
                     <Item>
                         <Icon name='ios-search' />
-                        <Input placeholder='Search' onChangeText={(text) => this.setState({ query })} onSubmitEditing={this.fetchArticle} />
+                        <Input placeholder='Search' onChangeText={(query) => this.setState({ query })} onSubmitEditing={this.fetchArticle} />
                         <Button onPress={this.sort} transparent>
-                            <Icon type='MaterialIcons' name='sort' />
+                            <Icon style={{color: '#363636'}} type='MaterialIcons' name='sort' />
                         </Button>
                     </Item>
                     <Button onPress={this.fetchArticle} transparent>

@@ -1,15 +1,14 @@
 import React from 'react';
-// import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import HomeScreen from './src/components/HomeScreen';
-import ArticleDetail from './src/components/article/ArticleDetail';
+import WebView from './src/components/WebView';
 
 const RootStack = createStackNavigator({
   Home: {
     screen: HomeScreen
   },
-  ArticleDetail: {
-    screen: ArticleDetail
+  WebView: {
+    screen: WebView
   }
 });
 

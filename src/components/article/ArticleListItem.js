@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ListItem, Thumbnail, Text, Left, Body } from 'native-base';
 import moment from 'moment';
-import { BASE_URL } from '../../api/services';
+import { BASE_URL } from '../../api/constant';
 
 class ArticleListItem extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class ArticleListItem extends Component {
         return (
             <ListItem 
             thumbnail
-            onPress={() => this.props.navigation.navigate('ArticleDetail',{
+            onPress={() => this.props.navigation.navigate('WebView',{
                 webUrl: web_url
             })}>
                 <Left>
@@ -25,7 +25,7 @@ class ArticleListItem extends Component {
 
                 </Left>
                 <Body>
-                    <Text style={{ fontWeight: "bold" }} bold>{headline}</Text>
+                    <Text style={{ fontWeight: 'bold' }} bold>{headline}</Text>
                     <Text style={{ fontSize: 12 }} numberOfLines={2}>{snippet}</Text>
                     <Text style={{ fontSize: 12 }} note>{moment(pub_date).startOf('hour').fromNow()}</Text>
                 </Body>
